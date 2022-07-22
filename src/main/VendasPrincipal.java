@@ -19,7 +19,7 @@ public class VendasPrincipal {
     public static void main(String[] args) {
 
         Produto produto1 = new Produto("Laranja", 2.00, 25);
-        Produto produto2 = new Produto("Maca", 1.50, 0);
+        Produto produto2 = new Produto("Maca", 1.50, 1);
         Produto produto3 = new Produto("abacate", 10.00, 20);
         Produto produto4 = new Produto("tomate", 7.50, 0);
 
