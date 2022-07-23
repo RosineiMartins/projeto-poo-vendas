@@ -1,18 +1,22 @@
 package model;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Venda {
-    private float valorTotal;
+    DecimalFormat decFormat = new DecimalFormat("'R$ ' 0.##");
+    private BigDecimal valorTotal;
 
     private ArrayList<Produto> listaVenda;
 
 
-    public float getValorTotal() {
+    public BigDecimal getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(float valorTotal) {
+    public void setValorTotal(BigDecimal valorTotal) {
         this.valorTotal = valorTotal;
     }
 
@@ -28,14 +32,18 @@ public class Venda {
         if (listaVenda == null) {
             listaVenda = new ArrayList<>();
         }
+        if (Objects.isNull(valorTotal)) {
+            valorTotal = BigDecimal.ZERO;
+        }
         listaVenda.add(prod);
-        valorTotal += prod.getPreco();
+        valorTotal = valorTotal.add(prod.getPreco());
 
     }
 
     public void visualizarVenda() {
+
         for (Produto prod : listaVenda) {
-            System.out.println("Produto " + prod.getNome() + " Preco " + prod.getPreco());
+            System.out.println("Produto " + prod.getNome() + " Preco " + decFormat.format(prod.getPreco()));
 
         }
 
@@ -43,7 +51,7 @@ public class Venda {
 
     public void concluirVenda(Pagamento pagamento) {
 
-        System.out.println("Valor Total de venda: " + valorTotal);
+        System.out.println(String.format(String.format("Valor Total de venda: " + decFormat.format(valorTotal))));
         pagamento.realizarPagamento(pagamento);
         listaVenda = new ArrayList<>();
 

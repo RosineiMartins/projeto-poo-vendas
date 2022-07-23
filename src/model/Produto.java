@@ -1,13 +1,15 @@
 package model;
 
+import java.math.BigDecimal;
+
 public class Produto {
 
 
     private String nome;
-    private double preco;
+    private BigDecimal preco;
     private int quantidadeEstoque;
 
-    public Produto(String nome, double preco, int quantidadeEstoque) {
+    public Produto(String nome, BigDecimal preco, int quantidadeEstoque) {
         this.nome = nome;
         this.preco = preco;
         this.quantidadeEstoque = quantidadeEstoque;
@@ -21,11 +23,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 
